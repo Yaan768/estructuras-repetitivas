@@ -1,25 +1,33 @@
-#include <iostream> // Relacionar número con vocal
+#include <iostream>//Promedio de numeros no negativos
 using namespace std;
-
 int main() {
-    int num;
+    int n, num, s = 0, cont = 0; //n: cantidad, num: número a ingresar, s: suma, cont: contador
+    
+    //Entrada con validación
+    cout << "¿Cuantos numeros vas a ingresar? ";
+    cin >> n;
 
-    // Entrada
-    cout << "Ingrese un número del 1 al 5: ";
-    cin >> num;
+    if (n <= 0) {
+        cout << "Cantidad inválida. Debe ser mayor que cero." << endl;
+        return 0;
+    }
 
-    // Validación
-    if (num < 1 || num > 5) {
-        cout << "Error: el número debe estar entre 1 y 5." << endl;
-    } else {
-        // Proceso
-        switch (num) {
-            case 1: cout << "La vocal es A." << endl; break;
-            case 2: cout << "La vocal es E." << endl; break;
-            case 3: cout << "La vocal es I." << endl; break;
-            case 4: cout << "La vocal es O." << endl; break;
-            case 5: cout << "La vocal es U." << endl; break;
+    for (int i = 0; i < n; i = i + 1) {
+        cout << "Introduce el numero " << i + 1 << ": ";
+        cin >> num;
+
+        if (num >= 0) {
+            s = s + num;
+            cont = cont + 1;
+        } else {
+            cout << "Numero negativo ignorado." << endl;
         }
     }
+
+    //Salida
+    if (cont > 0)
+        cout << "El promedio es: " << (float)s / cont << endl;
+    else
+        cout << "No se ingresaron numeros no negativos." << endl;
 }
 
