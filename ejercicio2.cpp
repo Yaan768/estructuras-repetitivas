@@ -1,16 +1,21 @@
 #include <iostream>//Repetir hasta que se ingrese num negativo
 using namespace std;
+
 int main() {
     int num;
-    //Se repite mientras num no sea negativo 
+    int contador = 0;
+
+    // Se repite mientras num no sea negativo 
     while (true) {
-    	//Entrada
-        cout << "Introduce un numero: ";
+        cout << "Introduce un numero (negativo para salir): ";
         cin >> num;
-        //proceso
+
         if (num < 0)
             break;
+
+        contador++; // Cuenta solo números válidos
     }
-    //Salida
-    cout << "Fin de la captura" << endl;
+
+    cout << "Fin de la captura. Se ingresaron " << contador << " numeros validos." << endl;
 }
+
