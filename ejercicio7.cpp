@@ -1,4 +1,5 @@
-#include <iostream>//Promedio de numeros pares e impares 
+#include <iostream>
+#include <limits> // Para limpiar errores de entrada
 using namespace std;
 
 int main() {
@@ -6,12 +7,27 @@ int main() {
     int sumaPares = 0, sumaImpares = 0;
     int contPares = 0, contImpares = 0;
 
-    cout << "¿Cuantos numeros vas a ingresar? ";
-    cin >> n;
+    // Título
+    cout << "=============================================\n";
+    cout << "   PROMEDIO DE NUMEROS PARES E IMPARES\n";
+    cout << "=============================================\n";
 
+    // Entrada 
+    cout << "¿Cuantos numeros vas a ingresar?: ";
+    while (!(cin >> n) || n <= 0) {
+        cout << "Por favor, ingrese una cantidad valida: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    // Proceso
     for (int i = 1; i <= n; i++) {
         cout << "Ingrese el numero " << i << ": ";
-        cin >> num;
+        while (!(cin >> num)) {
+            cout << "Entrada invalida. Ingrese un numero entero: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
 
         if (num % 2 == 0) {
             sumaPares += num;
@@ -22,18 +38,18 @@ int main() {
         }
     }
 
-    // Cálculo de promedios con validación para evitar división entre cero
-    if (contPares > 0) {
+    // Salida
+    cout << "---------------------------------------------\n";
+    if (contPares > 0)
         cout << "Promedio de numeros pares: " << (float)sumaPares / contPares << endl;
-    } else {
+    else
         cout << "No se ingresaron numeros pares." << endl;
-    }
 
-    if (contImpares > 0) {
+    if (contImpares > 0)
         cout << "Promedio de numeros impares: " << (float)sumaImpares / contImpares << endl;
-    } else {
+    else
         cout << "No se ingresaron numeros impares." << endl;
-    }
 
+    cout << "=============================================\n";
 }
 
